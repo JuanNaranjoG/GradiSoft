@@ -1,14 +1,24 @@
-import React, { useState } from 'react'
-import firebase from "../../../utils/firebase";
+import React, { useState, useEffect } from 'react'
+import firebase from "../../../../utils/firebase";
 
-export default function Form() {
+export default function Form(props) {
     var db = firebase.firestore();
+    var ref = props.id;
     const [datos, setdatos] = useState({
         nombre: '',
         apellido: '',
         telefono: '',
         direccion: '',
     });
+    const [datosm, setdatosm] = useState({});
+
+    const load = async (ref) => {
+        await db.collection("clientes").doc(ref).get().then(function (doc) {
+            const docs = [];
+            docs.push({ ...doc.data(), id: doc.id })
+            console.log(docs);
+        })
+    }
 
     const handleInputChange = (event) => {
         setdatos({
@@ -18,7 +28,7 @@ export default function Form() {
     }
     const submit = (event) => {
         event.preventDefault();
-        db.collection("clientes").add({
+        db.collection("clientes").doc(ref).update({
             nombre: datos.nombre,
             apellido: datos.apellido,
             telefono: datos.telefono,
@@ -35,10 +45,15 @@ export default function Form() {
                 console.error("Error adding document: ", error);
             });
     }
-    
+
+    useEffect(() => {
+        load();
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <form className="form-signin needs-validation" noValidate onSubmit={submit}>
-            <h1 className="h3 mb-3 font-weight-normal text-center"><font className="formv"><font className="formv">Agregar cliente</font></font></h1>
+            <h1 className="h3 mb-3 font-weight-normal text-center"><font className="formv"><font className="formv">Modificar Cliente</font></font></h1>
             <div className="mb-2">
                 <label htmlFor="inputNombre" className=""><font className="formv"><font className="formv">Nombre</font></font></label>
                 <input

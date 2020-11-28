@@ -21,9 +21,18 @@ export default function Asidebar() {
               </Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link active" to={{
+              pathname: "/administracion/cliente",
+              state:2
+            }}>
+              <FontAwesomeIcon icon={faUserAlt} size="1x" className=" mr-md-2 mr-2 " />
+              Clientes
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to={{
               pathname: '/administracion/ordenes',
-              state:2
+              state:3
             }}>
               <FontAwesomeIcon icon={faFile} size="1x" className=" mr-md-2 mr-2 " />
               Ordenes
@@ -32,20 +41,11 @@ export default function Asidebar() {
           <li className="nav-item">
             <Link className="nav-link" to={{
               pathname: "/administracion/productos",
-              state:3
+              state:4
             }}>
               <FontAwesomeIcon icon={faDollyFlatbed} size="1x" className=" mr-md-2 mr-2 " />
               Productos
               </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link active" to={{
-              pathname: "/administracion/cliente",
-              state:4
-            }}>
-              <FontAwesomeIcon icon={faUserAlt} size="1x" className=" mr-md-2 mr-2 " />
-              Clientes
-            </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to={{

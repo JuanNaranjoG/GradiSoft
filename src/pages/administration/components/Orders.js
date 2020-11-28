@@ -8,7 +8,7 @@ export default function Clients(props) {
   const [datos, setdatos] = useState({});
 
   const load = () => {
-    db.collection("clientes").onSnapshot((querySnapshot) => {
+    db.collection("ordenes").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach(doc => {
         docs.push({ ...doc.data(), id: doc.id })
@@ -20,7 +20,7 @@ export default function Clients(props) {
 
   const remove = (id) => {
 
-    db.collection("clientes").doc(`${id}`).delete().then(function () {
+    db.collection("ordenes").doc(`${id}`).delete().then(function () {
       console.log("Document successfully deleted!");
     }).catch(function (error) {
       console.error("Error removing document: ", error);
@@ -38,10 +38,11 @@ export default function Clients(props) {
       <table className="table table-striped table-sm">
         <thead>
           <tr className="text-center">
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Teléfono</th>
-            <th>Dirección</th>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Fecha Creacion</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -49,10 +50,11 @@ export default function Clients(props) {
           {
             map(datos, (datos) => (
               <tr key={datos.id} className="text-center">
-                <td>{datos.nombre}</td>
-                <td>{datos.apellido}</td>
-                <td>{datos.telefono}</td>
-                <td>{datos.direccion}</td>
+                <td>{datos.id}</td>
+                <td>{datos.tipo}</td>
+                <td>{datos.descripcion}</td>
+                <td>{datos.fechacreacion}</td>
+                <td>{datos.estado}</td>
                 <td>
                 <button type="button" className="btn btn-success mr-2 mb-b-2 "
                   >Modificar

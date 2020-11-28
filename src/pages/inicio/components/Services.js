@@ -1,26 +1,29 @@
-import React from 'react'
+import React from 'react';
+import item1 from '../../../img/item1.png';
+import item2 from '../../../img/item2.png';
+import item3 from '../../../img/item3.png';
 
 export default function Services() {
     return (
         <div className="container services" id="Servicios">
             <div className="row">
                 <div className="col-lg-4">
-                    <img className="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image1" width="140" height="140" />
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a className="btn btn-secondary" href="/#" role="button">View details »</a></p>
-                </div>
-                <div className="col-lg-4">
-                    <img className="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image2" width="140" height="140" />
-                    <h2>Heading</h2>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                    <p><a className="btn btn-secondary" href="/#" role="button">View details »</a></p>
-                </div>
-                <div className="col-lg-4">
-                    <img className="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image3" width="140" height="140" />
+                    <img className="rounded-circle" src={item1} alt="Item 1" width="140" height="140" />
                     <h2>Heading</h2>
                     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a className="btn btn-secondary" href="/#" role="button">View details »</a></p>
+                    <p><a className="btn btn-secondary" href="/#" role="button">Ver detalles »</a></p>
+                </div>
+                <div className="col-lg-4">
+                    <img className="rounded-circle" src={item2} alt="Item 2" width="140" height="140" />
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a className="btn btn-secondary" href="/#" role="button">Ver detalles »</a></p>
+                </div>
+                <div className="col-lg-4">
+                    <img className="rounded-circle"  src={item3} alt="Item 3" width="140" height="140" />
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a className="btn btn-secondary" href="/#" role="button">Ver detalles »</a></p>
                 </div>
             </div>
         </div>

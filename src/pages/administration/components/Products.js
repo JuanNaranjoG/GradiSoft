@@ -8,7 +8,7 @@ export default function Clients() {
   const [datos, setdatos] = useState({});
 
   const load = () => {
-    db.collection("clientes").onSnapshot((querySnapshot) => {
+    db.collection("productos").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach(doc => {
         docs.push({ ...doc.data(), id: doc.id })
@@ -20,7 +20,7 @@ export default function Clients() {
 
   const remove = (id) => {
 
-    db.collection("clientes").doc(`${id}`).delete().then(function () {
+    db.collection("productos").doc(`${id}`).delete().then(function () {
       console.log("Document successfully deleted!");
     }).catch(function (error) {
       console.error("Error removing document: ", error);
@@ -38,10 +38,13 @@ export default function Clients() {
       <table className="table table-striped table-sm">
         <thead>
           <tr className="text-center">
-            <th >Nombre</th>
-            <th>Apellido</th>
-            <th>Teléfono</th>
-            <th>Dirección</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Valor</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -49,12 +52,15 @@ export default function Clients() {
           {
             map(datos, (datos) => (
               <tr key={datos.id} className="text-center">
+                <td>{datos.id}</td>
                 <td>{datos.nombre}</td>
-                <td>{datos.apellido}</td>
-                <td>{datos.telefono}</td>
-                <td>{datos.direccion}</td>
+                <td>{datos.tipo}</td>
+                <td>{datos.descripcion}</td>
+                <td>{datos.valor}</td>
+                <td>{datos.cantidad}</td>
+                <td>{datos.estado}</td>
                 <td>
-                <button type="button" className="btn btn-success mr-2 mb-b-2 "
+                  <button type="button" className="btn btn-success mr-2 mb-b-2 "
                   >Modificar
                 </button>
                   <button type="button" className="btn btn-danger"

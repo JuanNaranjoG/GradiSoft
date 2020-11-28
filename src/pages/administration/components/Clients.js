@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import firebase from "../../../utils/firebase";
 import 'firebase/firestore';
 import { map } from "lodash"
+import ModalM from './ModalM'
 
 export default function Clients() {
   var db = firebase.firestore();
   const [datos, setdatos] = useState({});
 
-  const load = () => {
-    db.collection("clientes").onSnapshot((querySnapshot) => {
+  const load = async () => {
+    await db.collection("clientes").onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach(doc => {
         docs.push({ ...doc.data(), id: doc.id })
@@ -18,8 +19,8 @@ export default function Clients() {
 
   }
 
-  const remove = (id) => {
-    db.collection("clientes").doc(`${id}`).delete().then(function () {
+  const remove = async (id) => {
+    await db.collection("clientes").doc(`${id}`).delete().then(function () {
       console.log("Document successfully deleted!");
     }).catch(function (error) {
       console.error("Error removing document: ", error);
@@ -52,20 +53,21 @@ export default function Clients() {
                 <td>{datos.telefono}</td>
                 <td>{datos.direccion}</td>
                 <td>
-                  <button type="button" className="btn btn-success mr-2 mb-b-2 "
+                  <button type="button" className="btn btn-success mr-2 mb-b-2 " data-toggle="modal" data-target="#Modificar"
                   >Modificar
                 </button>
+                <ModalM  id={datos.id}/>
                   <button type="button" className="btn btn-danger"
                     onClick={(datos) => remove(datos.id)}
                   >Eliminar
                 </button>
-
                 </td>
               </tr>
             ))
           }
         </tbody>
       </table>
+
     </div>
   )
 }
